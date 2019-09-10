@@ -1,0 +1,5 @@
+{
+  "tslint.enable": false,
+  "eslint.enable": true,
+  "react-native-tools.projectRoot": "./mobile"
+}
