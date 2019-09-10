@@ -1,5 +1,13 @@
 {
   "tslint.enable": false,
   "eslint.enable": true,
-  "react-native-tools.projectRoot": "./mobile"
+  "eslint.alwaysShowStatus": true,
+  "eslint.autoFixOnSave": true,
+  "eslint.validate": [
+    "javascript",
+    "javascriptreact",
+    "typescript",
+    "typescriptreact"
+  ],
+  "react-native-tools.projectRoot": "./packages/mobile"
 }

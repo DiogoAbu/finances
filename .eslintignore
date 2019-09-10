@@ -17,3 +17,8 @@ node_modules/
 node_modules/**
 **/node_modules/
 **/node_modules/**
+
+packages/mobile/index.js
+packages/mobile/babel.config.js
+packages/mobile/metro.config.js
+packages/mobile/jest.config.js

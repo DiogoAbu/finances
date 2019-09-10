@@ -2,13 +2,13 @@ version: '3'
 services:
   # list of microservices
   user:
-    build: ./services/user
+    build: ./packages/user
     networks:
       internal:
 
   # the gateway should depend on all other services
   gateway:
-    build: ./services/gateway
+    build: ./packages/gateway
     ports:
       - '4000:3000'
     depends_on:

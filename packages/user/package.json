@@ -7,8 +7,8 @@
     "dev": "ts-node-dev --respawn --transpileOnly src",
     "build": "tsc",
     "start": "node .",
-    "lint": "eslint src --ext .js,.ts",
-    "test": "echo \"Error: no test specified\" && exit 1"
+    "lint": "eslint src --ext .js,.ts  --parser-options={project:'./tsconfig.json'}",
+    "test": "echo \"No test specified\" && exit 0"
   },
   "dependencies": {
     "@apollo/federation": "^0.9.4",

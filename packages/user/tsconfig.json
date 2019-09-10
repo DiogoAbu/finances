@@ -3,6 +3,7 @@
     "allowJs": true,
     "allowSyntheticDefaultImports": true,
     "alwaysStrict": true,
+    "baseUrl": "./src",
     "checkJs": true,
     "esModuleInterop": true,
     "isolatedModules": false,
@@ -23,5 +24,6 @@
     "strictNullChecks": true,
     "strictPropertyInitialization": false,
     "target": "esnext"
-  }
+  },
+  "include": ["src"]
 }

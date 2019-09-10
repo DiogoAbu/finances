@@ -1,0 +1,74 @@
+{
+  "env": {
+    "browser": true,
+    "jest": true,
+    "node": true,
+    "react-native/react-native": true
+  },
+  "extends": [
+    "eslint:recommended",
+    "plugin:@typescript-eslint/recommended",
+    "plugin:@typescript-eslint/recommended-requiring-type-checking",
+    "plugin:import/errors",
+    "plugin:import/warnings",
+    "plugin:import/typescript",
+    "plugin:react/recommended",
+    "prettier",
+    "prettier/@typescript-eslint",
+    "prettier/react"
+  ],
+  "globals": {
+    "HermesInternal": true
+  },
+  "parser": "@typescript-eslint/parser",
+  "parserOptions": {
+    "ecmaFeatures": {
+      "jsx": true
+    },
+    "ecmaVersion": 6,
+    "project": "./packages/**/tsconfig.json",
+    "sourceType": "module"
+  },
+  "plugins": [
+    "import",
+    "@typescript-eslint",
+    "react",
+    "react-hooks",
+    "react-native",
+    "prettier"
+  ],
+  "rules": {
+    "@typescript-eslint/no-explicit-any": 0,
+    "@typescript-eslint/no-use-before-define": [
+      "error",
+      {
+        "classes": true,
+        "functions": true,
+        "variables": false
+      }
+    ],
+    "import/order": [
+      2,
+      {
+        "groups": ["builtin", "external", "parent", "sibling", "index"],
+        "newlines-between": "always"
+      }
+    ],
+    "linebreak-style": ["error", "unix"],
+    "prettier/prettier": 2
+  },
+  "settings": {
+    "import/parsers": {
+      "@typescript-eslint/parser": [".ts", ".tsx"]
+    },
+    "import/resolver": {
+      "node": {
+        "extensions": [".js", ".jsx", ".ts", ".tsx"]
+      }
+    },
+    "react": {
+      "version": "detect"
+    },
+    "react-native/style-sheet-object-names": ["EStyleSheet"]
+  }
+}
