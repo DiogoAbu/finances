@@ -25,7 +25,7 @@
     "ecmaFeatures": {
       "jsx": true
     },
-    "ecmaVersion": 6,
+    "ecmaVersion": 9,
     "project": "./packages/**/tsconfig.json",
     "sourceType": "module"
   },
@@ -55,7 +55,10 @@
       }
     ],
     "linebreak-style": ["error", "unix"],
-    "prettier/prettier": 2
+    "no-unexpected-multiline": "error",
+    "prettier/prettier": 2,
+    "react-hooks/exhaustive-deps": "warn",
+    "react-hooks/rules-of-hooks": "error"
   },
   "settings": {
     "import/parsers": {

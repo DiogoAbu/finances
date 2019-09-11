@@ -1,6 +1,6 @@
 version: '3'
 services:
-  # list of microservices
+  # microservices, no need to expose ports since we'll be talking to the gateway
   user:
     build: ./packages/user
     networks:
