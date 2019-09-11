@@ -1,8 +1,11 @@
 {
   "name": "finances",
   "version": "0.1.0",
-  "license": "MIT",
   "private": true,
+  "homepage": "https://github.com/DiogoAbu/finances",
+  "bugs": "https://github.com/DiogoAbu/finances/issues",
+  "repository": "github:DiogoAbu/finances",
+  "license": "GPL-3.0-or-later",
   "workspaces": {
     "packages": [
       "packages/*"
