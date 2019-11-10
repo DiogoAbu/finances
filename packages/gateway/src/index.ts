@@ -13,7 +13,7 @@ const isDev = process.env.NODE_ENV !== 'production';
   try {
     const serviceList = Object.entries(services).map(([name, port]) => ({
       name,
-      url: isDev ? `http://localhost:${port}` : 'http://user:3000',
+      url: isDev ? `http://localhost:${port}` : `http://${name}:3000`,
     }));
 
     // Add services
