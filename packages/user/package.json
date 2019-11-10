@@ -2,7 +2,7 @@
   "name": "user",
   "version": "0.1.0",
   "main": "dist",
-  "license": "MIT",
+  "license": "GPL-3.0-or-later",
   "scripts": {
     "dev": "ts-node-dev --respawn --transpileOnly src",
     "build": "tsc",
@@ -17,11 +17,17 @@
     "apollo-server": "^2.9.3",
     "debug": "^4.1.1",
     "graphql": "^14.5.4",
-    "lodash": "^4.17.15"
+    "lodash": "^4.17.15",
+    "pg": "^7.12.1",
+    "reflect-metadata": "^0.1.13",
+    "type-graphql": "^0.18.0-beta.3",
+    "typedi": "^0.8.0",
+    "typeorm": "^0.2.19"
   },
   "devDependencies": {
     "dotenv": "^8.1.0",
     "dotenv-expand": "^5.1.0",
-    "ts-node-dev": "^1.0.0-pre.42"
+    "ts-node-dev": "^1.0.0-pre.42",
+    "typescript": "^3.7.2"
   }
 }

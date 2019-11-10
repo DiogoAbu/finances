@@ -1,24 +1,38 @@
-import './helpers/dotenv';
+import './services/dotenv';
 
 import { ApolloServer } from 'apollo-server';
 import { ApolloGateway } from '@apollo/gateway';
 
-import debug from './helpers/debug';
-import sigkill from './helpers/sigkill';
-import serviceList from './services';
+import services from './serviceList.json';
+import debug from './services/debug';
+import sigkill from './services/sigkill';
 
-(async (): Promise<void> => {
-  const gateway = new ApolloGateway({
-    serviceList,
-  });
+const isDev = process.env.NODE_ENV !== 'production';
 
-  const { schema, executor } = await gateway.load();
+(async () => {
+  try {
+    const serviceList = Object.entries(services).map(([name, port]) => ({
+      name,
+      url: isDev ? `http://localhost:${port}` : 'http://user:3000',
+    }));
 
-  const server = new ApolloServer({ schema, executor });
+    // Add services
+    const gateway = new ApolloGateway({ serviceList });
 
-  sigkill(() => server.stop());
+    // Load schema
+    const { schema, executor } = await gateway.load();
 
-  const { url } = await server.listen(process.env.PORT);
+    // Define server
+    const server = new ApolloServer({ schema, executor });
 
-  debug('ready at %s', url);
+    // Handle shutdown
+    sigkill(() => server.stop());
+
+    // Start server
+    const { url } = await server.listen(process.env.PORT);
+
+    debug('ready at %s', url);
+  } catch (err) {
+    debug(err);
+  }
 })();

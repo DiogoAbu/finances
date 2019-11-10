@@ -1,21 +1,46 @@
-import './helpers/dotenv';
+import 'reflect-metadata';
+import './services/dotenv';
 
 import { ApolloServer } from 'apollo-server';
-import { buildFederatedSchema } from '@apollo/federation';
 
-import debug from './helpers/debug';
-import sigkill from './helpers/sigkill';
-import resolvers from './resolver';
-import typeDefs from './schema/user';
+import { User, resolveUserReference } from './entities/User/User';
+import { buildFederatedSchema } from './helpers/buildFederatedSchema';
+import UserResolver from './entities/User/User.resolver';
+import debug from './services/debug';
+import db from './services/db';
+import sigkill from './services/sigkill';
 
-const server = new ApolloServer({
-  schema: buildFederatedSchema([{ typeDefs, resolvers } as any]),
-});
+(async () => {
+  try {
+    await db();
 
-sigkill(() => server.stop());
+    // Define schema
+    const schema = await buildFederatedSchema(
+      {
+        resolvers: [UserResolver],
+        orphanedTypes: [User],
+        validate: false,
+      },
+      {
+        User: { __resolveReference: resolveUserReference },
+      },
+    );
 
-(async (): Promise<void> => {
-  const { url } = await server.listen(process.env.PORT);
+    // Define server
+    const server = new ApolloServer({
+      schema,
+      tracing: false,
+      playground: true,
+    });
 
-  debug('ready at %s', url);
+    // Handle shutdown
+    sigkill(() => server.stop());
+
+    // Start server
+    const { url } = await server.listen(process.env.PORT);
+
+    debug('ready at %s', url);
+  } catch (err) {
+    debug(err);
+  }
 })();

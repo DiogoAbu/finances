@@ -2,7 +2,7 @@
   "name": "gateway",
   "version": "0.1.0",
   "main": "dist",
-  "license": "MIT",
+  "license": "GPL-3.0-or-later",
   "scripts": {
     "dev": "ts-node-dev --respawn --transpileOnly src",
     "build": "tsc",
@@ -22,6 +22,7 @@
   "devDependencies": {
     "dotenv": "^8.1.0",
     "dotenv-expand": "^5.1.0",
-    "ts-node-dev": "^1.0.0-pre.42"
+    "ts-node-dev": "^1.0.0-pre.42",
+    "typescript": "^3.7.2"
   }
 }

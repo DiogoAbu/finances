@@ -90,4 +90,5 @@ typings/
 # misc
 dist/
 .vscode/**
+!.vscode/extensions.json
 !.vscode/settings.json

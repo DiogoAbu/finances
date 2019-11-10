@@ -1,12 +1,30 @@
 {
-  "eslint.alwaysShowStatus": true,
+  // "[javascript]": {
+  //   "editor.formatOnSave": false
+  // },
+  // "[typescript]": {
+  //   "editor.formatOnSave": false
+  // },
+  "editor.formatOnSave": true,
   "eslint.autoFixOnSave": true,
   "eslint.enable": true,
   "eslint.validate": [
-    "javascript",
-    "javascriptreact",
-    "typescript",
-    "typescriptreact"
+    {
+      "autoFix": true,
+      "language": "javascript"
+    },
+    {
+      "autoFix": true,
+      "language": "javascriptreact"
+    },
+    {
+      "autoFix": true,
+      "language": "typescript"
+    },
+    {
+      "autoFix": true,
+      "language": "typescriptreact"
+    }
   ],
   "react-native-tools.projectRoot": "./packages/mobile",
   "tslint.enable": false
