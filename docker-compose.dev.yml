@@ -1,5 +1,0 @@
-version: '3.7'
-services:
-  # shared database
-  database:
-    env_file: db.env

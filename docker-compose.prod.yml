@@ -1,7 +1,0 @@
-version: '3.7'
-services:
-  # shared database
-  database:
-    environment:
-      - POSTGRES_PASSWORD
-      - POSTGRES_DB

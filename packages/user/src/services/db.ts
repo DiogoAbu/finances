@@ -18,7 +18,9 @@ export default async () => {
     database: POSTGRES_DB || 'finances',
     username: POSTGRES_USER || 'postgres',
     password: POSTGRES_PASSWORD || 'senha123',
-    synchronize: isDev,
+    // When sync is true data that use columns that were removed will be dropped.
+    // Leading to the loss of data.
+    synchronize: true,
     logging: isDev,
     dropSchema: isDev,
     cache: true,
