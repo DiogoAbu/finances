@@ -3,11 +3,10 @@ import './services/dotenv';
 
 import { ApolloServer } from 'apollo-server';
 
-import { User, resolveUserReference } from './entities/User/User';
-import { buildFederatedSchema } from './helpers/buildFederatedSchema';
-import UserResolver from './entities/User/User.resolver';
-import debug from './services/debug';
+import { entities, resolveReferences, resolvers } from './entities';
+import buildFederatedSchema from './helpers/buildFederatedSchema';
 import db from './services/db';
+import debug from './services/debug';
 import sigkill from './services/sigkill';
 
 (async () => {
@@ -17,13 +16,11 @@ import sigkill from './services/sigkill';
     // Define schema
     const schema = await buildFederatedSchema(
       {
-        resolvers: [UserResolver],
-        orphanedTypes: [User],
+        resolvers: resolvers as any,
+        orphanedTypes: entities,
         validate: false,
       },
-      {
-        User: { __resolveReference: resolveUserReference },
-      },
+      resolveReferences,
     );
 
     // Define server

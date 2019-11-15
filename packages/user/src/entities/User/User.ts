@@ -12,7 +12,7 @@ import {
 @Directive(`@key(fields: "id")`)
 @ObjectType()
 @Entity('users')
-export class User extends BaseEntity {
+export default class User extends BaseEntity {
   @Field((_type) => ID)
   @PrimaryGeneratedColumn('uuid')
   id: string;
@@ -36,8 +36,4 @@ export class User extends BaseEntity {
   @Field()
   @UpdateDateColumn({ type: 'timestamp' })
   updatedAt: string;
-}
-
-export function resolveUserReference(reference: Pick<User, 'id'>) {
-  return User.findOne(reference.id);
 }

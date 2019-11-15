@@ -8,9 +8,9 @@
   "license": "GPL-3.0-or-later",
   "scripts": {
     "predev": "docker run --name finances_database_dev --env-file .env -p 5432:5432 -v finances_db_dev:/var/lib/postgresql/data -d postgres:11-alpine || docker start finances_database_dev || exit 0",
-    "dev": "run-p dev:*",
-    "dev:user": "wait-on tcp:5432 && yarn workspace user dev",
-    "predev:gateway": "wait-on tcp:5432 tcp:3001",
+    "dev": "wait-on tcp:5432 && run-p dev:*",
+    "dev:user": "yarn workspace user dev",
+    "predev:gateway": "wait-on tcp:3001",
     "dev:gateway": "yarn workspace gateway dev",
     "android": "yarn workspace mobile android"
   },
@@ -47,7 +47,7 @@
   },
   "lint-staged": {
     "*.{js,ts,jsx,tsx}": [
-      "eslint  --fix",
+      "eslint --fix",
       "prettier --write",
       "git add"
     ]

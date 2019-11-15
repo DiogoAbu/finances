@@ -1,7 +1,7 @@
 import { Resolver, Query, Mutation, Arg } from 'type-graphql';
 
-import { User } from './User';
-import { UserInput } from './User.input';
+import User from './User';
+import UserInput from './User.input';
 
 @Resolver((_of) => User)
 export default class UserResolver {
@@ -19,4 +19,8 @@ export default class UserResolver {
   addUser(@Arg('data') userInput: UserInput) {
     return User.create(userInput).save();
   }
+}
+
+export function resolveUserReference(reference: Pick<User, 'id'>) {
+  return User.findOne(reference.id);
 }
