@@ -22,7 +22,7 @@
     "reflect-metadata": "^0.1.13",
     "type-graphql": "^0.18.0-beta.3",
     "typedi": "^0.8.0",
-    "typeorm": "^0.2.19"
+    "typeorm": "^0.2.25"
   },
   "devDependencies": {
     "dotenv": "^8.1.0",
